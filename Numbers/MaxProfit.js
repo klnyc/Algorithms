@@ -34,5 +34,5 @@ const testCases = [
   { input: [[100, 180, 260, 310, 40, 535, 695]], expected: 655 },
 ];
 
-import test from "./Test.js";
+import test from "../Test.js";
 test(maxProfit, testCases);

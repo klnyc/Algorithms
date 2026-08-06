@@ -37,5 +37,5 @@ const testCases = [
   { input: [[10, 20], 30], expected: [0, 1] },
 ];
 
-import test from "./Test.js";
+import test from "../Test.js";
 test(twoSum, testCases);

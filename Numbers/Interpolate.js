@@ -67,5 +67,5 @@ const testCases = [
   },
 ];
 
-import test from "./Test.js";
+import test from "../Test.js";
 test(interpolate, testCases);

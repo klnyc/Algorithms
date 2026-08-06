@@ -51,5 +51,5 @@ const testCases = [
   { input: ["abcdef", ["a", "abc", "b", "cd"]], expected: false },
 ];
 
-import test from "./Test.js";
+import test from "../Test.js";
 test(wordBreak, testCases);

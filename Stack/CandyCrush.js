@@ -65,5 +65,5 @@ const testCases = [
   { input: ["aaabbbacd"], expected: "acd" },
 ];
 
-import test from "./Test.js";
+import test from "../Test.js";
 test(candyCrush, testCases);

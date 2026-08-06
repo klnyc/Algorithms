@@ -21,5 +21,5 @@ const testCases = [
   { input: [["001456"]], expected: true },
 ];
 
-import test from "./Test.js";
+import test from "../Test.js";
 test(isAllNumbers, testCases);

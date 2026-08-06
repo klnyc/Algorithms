@@ -44,5 +44,5 @@ const testCases = [
   { input: [""], expected: true },
 ];
 
-import test from "./Test.js";
+import test from "../Test.js";
 test(isValidParenthesis, testCases);

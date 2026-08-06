@@ -129,5 +129,5 @@ const testCases = [
   { input: [[-5, -6, -8, 8, 6, 5]], expected: [-5, -6, -8, 8, 6, 5] },
 ];
 
-import test from "./Test.js";
+import test from "../Test.js";
 test(bubbleCollision, testCases);

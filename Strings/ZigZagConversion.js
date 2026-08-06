@@ -58,5 +58,5 @@ const testCases = [
   { input: ["SHORT", 10], expected: "SHORT" },
 ];
 
-import test from "./Test.js";
+import test from "../Test.js";
 test(zigzagConvert, testCases);
