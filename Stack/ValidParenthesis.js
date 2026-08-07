@@ -42,6 +42,7 @@ const testCases = [
   { input: ["{[]}"], expected: true },
   { input: ["(("], expected: false },
   { input: [""], expected: true },
+  { input: ["]]"], expected: false },
 ];
 
 import test from "../Test.js";
