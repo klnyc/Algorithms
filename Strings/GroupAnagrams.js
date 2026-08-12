@@ -13,9 +13,7 @@ const groupAnagrams = (words) => {
     }
   }
 
-  const sortedWords = Object.keys(map);
-  for (let i = 0; i < sortedWords.length; i++) {
-    const sortedWord = sortedWords[i];
+  for (const sortedWord in map) {
     results.push(map[sortedWord]);
   }
 
