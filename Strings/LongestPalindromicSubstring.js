@@ -18,7 +18,7 @@ const longestPalindromicSubstring = (string) => {
     let leftIndex = i - 1;
     let rightIndex = i + 1;
 
-    // odd length
+    // check odd length palindrome
     while (
       string[leftIndex] &&
       string[rightIndex] &&
@@ -36,7 +36,7 @@ const longestPalindromicSubstring = (string) => {
     leftIndex = i;
     rightIndex = i + 1;
 
-    // even length
+    // check even length palindrome
     while (string[rightIndex] && string[leftIndex] === string[rightIndex]) {
       let substring = string.slice(leftIndex, rightIndex + 1);
       if (substring.length > result.length) {
