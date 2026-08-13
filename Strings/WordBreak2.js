@@ -1,43 +1,70 @@
-// Given a string s and a dictionary of strings wordDict,
-// return true if s can be segmented into exactly two dictionary words.
-// Note that the same word in the dictionary may be reused multiple times in the segmentation.
-
 const wordBreak2 = (s, wordDict) => {
-  const words = {};
+  const map = {};
+  const results = [];
 
-  for (let i = 0; i < wordDict.length; i++) words[wordDict[i]] = true;
+  for (let i = 0; i < wordDict.length; i++) map[wordDict[i]] = true;
 
-  const scan = (string) => {
-    for (let i = 0; i < string.length; i++) {
-      const prefix = string.slice(0, i + 1);
-      if (words[prefix]) {
-        const suffix = string.slice(prefix.length);
-        if (words[suffix]) return true;
+  const scan = (string, path = []) => {
+    if (!string.length) {
+      results.push(path.join(" "));
+    } else {
+      for (let i = 0; i < string.length; i++) {
+        const prefix = string.slice(0, i + 1);
+        const suffix = string.slice(i + 1);
+        if (map[prefix]) {
+          scan(suffix, [...path, prefix]);
+        }
       }
     }
-
-    return false;
   };
 
-  return scan(s);
+  scan(s);
+  return results;
 };
 
 const testCases = [
-  { input: ["football", ["foot", "ball", "soccer"]], expected: true },
-  { input: ["apple", ["apple", "pie"]], expected: false },
-  { input: ["badbad", ["bad", "good"]], expected: true },
   {
-    input: ["citrusfruitjuice", ["citrus", "fruit", "juice"]],
-    expected: false,
+    input: ["catsanddog", ["cat", "cats", "and", "sand", "dog"]],
+    expected: ["cat sand dog", "cats and dog"],
   },
-  { input: ["backstage", ["back", "stage", "backs", "tage"]], expected: true },
-  { input: ["clockspeed", ["clock", "work"]], expected: false },
-  { input: ["workforce", ["task", "force"]], expected: false },
-  { input: ["at", ["a", "t", "b"]], expected: true },
-  { input: ["", ["a", "b"]], expected: false },
   {
-    input: ["supercalifragilistic", ["super", "califragilistic"]],
-    expected: true,
+    input: [
+      "pineapplepenapple",
+      ["apple", "pen", "applepen", "pine", "pineapple"],
+    ],
+    expected: [
+      "pine apple pen apple",
+      "pine applepen apple",
+      "pineapple pen apple",
+    ],
+  },
+  {
+    input: ["catsandog", ["cats", "dog", "sand", "and", "cat"]],
+    expected: [],
+  },
+  {
+    input: ["apple", ["apple"]],
+    expected: ["apple"],
+  },
+  {
+    input: ["a", ["a"]],
+    expected: ["a"],
+  },
+  {
+    input: ["aaaaaaa", ["aaaa", "aaa", "aa"]],
+    expected: ["aa aa aaa", "aa aaa aa", "aaa aa aa", "aaa aaaa", "aaaa aaa"],
+  },
+  {
+    input: ["abcd", ["a", "abc", "b", "cd"]],
+    expected: ["a b cd"],
+  },
+  {
+    input: ["a", ["b"]],
+    expected: [],
+  },
+  {
+    input: ["bedbathandbeyond", ["bed", "bath", "and", "beyond", "bedbath"]],
+    expected: ["bed bath and beyond", "bedbath and beyond"],
   },
 ];
 
